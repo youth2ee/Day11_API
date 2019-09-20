@@ -13,7 +13,10 @@ public class StackTest {
 	}
 	
 	public String getString() {
-		
+		return lists[0];
+	}
+	
+	public void setSting(String str) {
 		
 	}
 

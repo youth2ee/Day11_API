@@ -1,5 +1,6 @@
 package com.naver.StringTokenizer.ex1;
 
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class MemberMaker {
@@ -27,7 +28,9 @@ public class MemberMaker {
 		
 		//tokenizer
 		StringTokenizer st = new StringTokenizer(this.memberInfo,"-");
-		Member [] members = new Member[3]; 
+		//Member [] members = new Member[3]; 
+		ArrayList<Member> ar = new ArrayList<>();
+	
 		int index=0;
 		
 		while(st.hasMoreTokens()) {
@@ -37,14 +40,20 @@ public class MemberMaker {
 			member.setName(st.nextToken());
 			member.setAge(Integer.parseInt(st.nextToken()));
 			
-			members[index] = member;
-			index++;
+			ar.add(member);
+			
+			//members[index] = member;
+			//index++;
 		}//while
 		
-		for(int i=0; i<members.length;i++) {
-			System.out.println("Id : "+members[i].getId());
-			System.out.println("Name : "+members[i].getName());
-			System.out.println("Age : "+members[i].getAge());
+		//for(int i=0; i<members.length;i++) {
+		for(int i=0; i<ar.size();i++) {
+			System.out.println("Id : "+ar.get(i).getId());
+			System.out.println("Name : "+ar.get(i).getName());
+			System.out.println("Age : "+ar.get(i).getAge());
+			//System.out.println("Id : "+members[i].getId());
+			//System.out.println("Name : "+members[i].getName());
+			//System.out.println("Age : "+members[i].getAge());
 		}//for
 
 	}//makeMember
