@@ -1,11 +1,17 @@
 package com.naver.collection.ex3;
 
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.StringTokenizer;
+
+import com.naver.StringTokenizer.ex1.Member;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 public class WeatherService {
 	
 	private StringBuffer sb;
 	private StringTokenizer st;
+	private Scanner sc;
 	
 	public WeatherService() {
 		sb = new StringBuffer();
@@ -31,21 +37,57 @@ public class WeatherService {
 	//메서드명 fineWeather
 	//도시명을 입력받아서 해당 웨더객체를 찾는다. 
 	
-	public void init() { //1번
+	public void init(ArrayList<Weather> weathers) { //1번
 		String str =""; 
 		str = sb.toString();
 		st = new StringTokenizer(str, "-");
+		
+		while(st.hasMoreTokens()) {
+			Weather weather = new Weather();
+			
+			weather.setCity(st.nextToken());
+			weather.setGion(Double.parseDouble(st.nextToken()));
+			weather.setHumidity(Integer.parseInt(st.nextToken()));
+			weather.setStatus(st.nextToken());
+			
+			weathers.add(weather);
+		}
 	}
 	
-	public void addWeather() { //2번
-	
-		
-		
-		
-		
+	public void addWeather(ArrayList<Weather> weathers) { //2번
+		sc = new Scanner(System.in);
+
+			Weather weather = new Weather();
+			
+			System.out.println("추가할 도시");
+			weather.setCity(sc.next());
+			System.out.println("기온");
+			weather.setGion(sc.nextDouble());
+			System.out.println("습도");
+			weather.setHumidity(sc.nextInt());
+			System.out.println("상태");
+			weather.setStatus(sc.next());
+			
+			weathers.add(weather);		
 	}
 	
-	public void fineWeather() { //4번
+	public Weather fineWeather(ArrayList<Weather> weathers) { //4번
+		sc = new Scanner(System.in);
+		
+		System.out.println("찾을 도시의 이름");
+		String city = sc.next();
+		
+		Weather weather = null;
+		
+		for(int i=0;i<weathers.size();i++) {
+			if(weathers.get(i).getCity().equals(city)) {
+				weather = weathers.get(i);
+				break;
+			}
+		}
+		return weather;
+		
+		
 		
 	}
 

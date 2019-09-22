@@ -1,14 +1,18 @@
 package com.naver.collection.ex3;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeatherMenu {
+	
+	private ArrayList<Weather> weathers;
 	
 	private Scanner sc;
 	private WeatherService ws;
 	private WeatherView wv;
 	
 	public WeatherMenu() {
+		weathers = new ArrayList<Weather>();
 		sc = new Scanner(System.in);
 		ws = new WeatherService();
 		wv = new WeatherView();
@@ -23,6 +27,9 @@ public class WeatherMenu {
 	
 	public void start() {
 		
+		boolean check = true;
+		
+		while(true) {
 		System.out.println("1. 날씨정보초기화");
 		System.out.println("2. 날씨정보 추가");
 		System.out.println("3. 전체 날씨정보");
@@ -33,27 +40,27 @@ public class WeatherMenu {
 		
 		switch(num){
 		case 1:
-			ws.init();
+			ws.init(weathers);
 			break;
 			
 		case 2:
-			ws.addWeather();
+			ws.addWeather(weathers);
 			break;
 			
 		case 3:
-			wv.view();
+			wv.view(weathers);
 			break;
 			
 		case 4:
-			ws.fineWeather();
-			wv.view();
+			Weather weather = ws.fineWeather(weathers);
+			wv.view(weather);
 			break;
 			
 		case 5:
 		}
 		
 		
-		
+		}
 		
 	}
 }
