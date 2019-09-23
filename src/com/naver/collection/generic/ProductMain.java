@@ -14,8 +14,8 @@ public class ProductMain {
 		ArrayList<? extends Computer> ar = new ArrayList<Computer>();
 		//Computer와 Computer를 상속받은 애들(Notebook)을 모을래
 		
-		ar.add(computer);
-		ar.add(notebook);
+		//ar.add(computer);
+		//ar.add(notebook);
 		
 		/*
 		//<Generic> : 데이터타입에 제한을 둔다.
