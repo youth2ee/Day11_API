@@ -53,7 +53,12 @@ public class StudentMenu {
 				break;
 
 			case 4:
-				students = ss.studentDelete(students);
+				//switch문은 Student student를 다시선언 할 수 없다.
+				//혹시 니가 case 3의 break를 없앨수도 있으니까 
+				//if else문에서는 각자 선언가능
+				student = ss.studentSearch(students);
+				ss.studentDelete(students, student);
+				
 				break;
 
 			case 5:

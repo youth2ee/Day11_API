@@ -29,7 +29,7 @@ public class WeatherMenu {
 		
 		boolean check = true;
 		
-		while(true) {
+		while(check) {
 		System.out.println("1. 날씨정보초기화");
 		System.out.println("2. 날씨정보 추가");
 		System.out.println("3. 전체 날씨정보");
@@ -57,6 +57,8 @@ public class WeatherMenu {
 			break;
 			
 		case 5:
+			System.out.println("종료합니다.");
+			check=!check;
 		}
 		
 		

@@ -1,10 +1,13 @@
-package com.naver.collection.ex3;
+package com.naver.collection.ex4;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import com.naver.StringTokenizer.ex1.Member;
+import com.naver.collection.ex3.Weather;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 public class WeatherService {
@@ -14,6 +17,7 @@ public class WeatherService {
 	private Scanner sc;
 	
 	public WeatherService() {
+		sc = new Scanner(System.in);
 		sb = new StringBuffer();
 		sb.append("Seoul-17.2-60-흐림-");
 		sb.append("Daejeon-29.9-20-맑음-");
@@ -21,33 +25,15 @@ public class WeatherService {
 		sb.append("Incheon-89-20-불");
 		
 	}
-	
-	//문자열 하나 파싱 토크나이저
-	
-	//메서드명 init
-	//날씨정보를 파싱해서 저장한다. 
-	//어레이리스트에 하나씩 한다.
-	
-	//메서드명 addWeather
-	//날씨정보를 입력받아서 추가한다.
-	//없는 지역을 직접 입력받아서 
-	//지역 기온 습도 현재상태 를 스캐너로 입력받는다.
-	//추가하는 것
-	
-	//메서드명 fineWeather
-	//도시명을 입력받아서 해당 웨더객체를 찾는다. 
-	
-	public void init(ArrayList<Weather> weathers) { //1번
-		//sb는 stringbuffer타입
-		//st는 string타입
-		//stringTokenizer는 string타입을 요하므로,
-		//stringbuffer를 string으로 바꿔준다.
 		
-		//String str =""; 
-		//str = sb.toString();
-		//st = new StringTokenizer(str, "-");
+	//hashmap
+	//1번 날씨정보초기화
+	public HashMap<String, Weather> init() {
 		st = new StringTokenizer(sb.toString(), "-");
+		//키는 도시명, value는 날씨타입
 		
+		HashMap<String, Weather> map = new HashMap<String, Weather>();
+	
 		while(st.hasMoreTokens()) {
 			Weather weather = new Weather();
 			
@@ -56,11 +42,13 @@ public class WeatherService {
 			weather.setHumidity(Integer.parseInt(st.nextToken()));
 			weather.setStatus(st.nextToken());
 			
-			weathers.add(weather);
+			map.put(weather.getCity(), weather);
 		}
+		return map;
 	}
 	
-	public void addWeather(ArrayList<Weather> weathers) { //2번
+	//2번 날씨정보추가
+	public void addWeather(HashMap<String, Weather> map) { //2번
 		sc = new Scanner(System.in);
 
 			Weather weather = new Weather();
@@ -74,27 +62,31 @@ public class WeatherService {
 			System.out.println("상태");
 			weather.setStatus(sc.next());
 			
-			weathers.add(weather);		
+			map.put(weather.getCity(), weather);
 	}
 	
-	public Weather fineWeather(ArrayList<Weather> weathers) { //4번
+	//4번 지역날씨정보
+	public Weather findWeather(HashMap<String, Weather> map) {
 		sc = new Scanner(System.in);
-		
 		System.out.println("찾을 도시의 이름");
 		String city = sc.next().toUpperCase();
 		
-		Weather weather = null;
+		Weather weather = map.get(city); //city가 key값과 같은지 
+	
+		return weather;	
+	}
+	
+	//5번 지역날씨삭제
+	public Weather deleteWeather(HashMap<String, Weather> map) {
+		//도시명을 입력받아 해당 웨더를 삭제
+		//삭제가 될수도 안될수도.
 		
-		for(int i=0;i<weathers.size();i++) {
-			if(weathers.get(i).getCity().equals(city)) {
-				weather = weathers.get(i);
-				break;
-			}
-		}
+		System.out.println("삭제할 도시의 이름");
+		String city = sc.next().toUpperCase();
+		
+		Weather weather = map.remove(city);
+	
 		return weather;
-		
-		
-		
 	}
 
 }
