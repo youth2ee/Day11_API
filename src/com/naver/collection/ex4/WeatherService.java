@@ -31,7 +31,7 @@ public class WeatherService {
 	public HashMap<String, Weather> init() {
 		st = new StringTokenizer(sb.toString(), "-");
 		//키는 도시명, value는 날씨타입
-		
+		 
 		HashMap<String, Weather> map = new HashMap<String, Weather>();
 	
 		while(st.hasMoreTokens()) {

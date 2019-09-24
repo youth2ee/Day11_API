@@ -34,7 +34,7 @@ public class CalendarTest {
 		//0으로 시작해서 현재보다 1달 적은 달이 표시된다.
 		//1월은 0, 2월은 1, 12월은 11이라고 표시된다.
 		System.out.println(mon+1);
-		//출력할때 +1해준ㄷ.
+		//출력할때 +1해준다.
 		
 		//일
 		int day = cal.get(Calendar.DATE);
