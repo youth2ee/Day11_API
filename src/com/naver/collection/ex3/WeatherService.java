@@ -68,14 +68,14 @@ public class WeatherService {
 			System.out.println("추가할 도시");
 			weather.setCity(sc.next().toUpperCase());
 			System.out.println("기온");
-			weather.setGion(sc.nextDouble());
+			weather.setGzion(sc.nextDouble());
 			System.out.println("습도");
 			weather.setHumidity(sc.nextInt());
 			System.out.println("상태");
 			weather.setStatus(sc.next());
 			
 			weathers.add(weather);		
-	}
+	}//2
 	
 	public Weather fineWeather(ArrayList<Weather> weathers) { //4번
 		sc = new Scanner(System.in);
@@ -95,6 +95,6 @@ public class WeatherService {
 		
 		
 		
-	}
+	}//4
 
 }
