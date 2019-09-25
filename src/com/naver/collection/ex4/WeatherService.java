@@ -68,7 +68,7 @@ public class WeatherService {
 	//4번 지역날씨정보
 	public Weather findWeather(HashMap<String, Weather> map) {
 		sc = new Scanner(System.in);
-		System.out.println("찾을 도시의 이름");
+		System.out.println("도시의 이름");
 		String city = sc.next().toUpperCase();
 		
 		Weather weather = map.get(city); //city가 key값과 같은지 

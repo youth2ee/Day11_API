@@ -68,7 +68,7 @@ public class WeatherService {
 			System.out.println("추가할 도시");
 			weather.setCity(sc.next().toUpperCase());
 			System.out.println("기온");
-			weather.setGzion(sc.nextDouble());
+			weather.setGion(sc.nextDouble());
 			System.out.println("습도");
 			weather.setHumidity(sc.nextInt());
 			System.out.println("상태");

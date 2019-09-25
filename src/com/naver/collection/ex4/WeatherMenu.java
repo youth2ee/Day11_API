@@ -47,7 +47,6 @@ public class WeatherMenu {
 			case 1: //초기화
 				map = ws.init();
 				wv.view(map);
-
 				break;
 
 			case 2: //추가
